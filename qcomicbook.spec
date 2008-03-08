@@ -6,7 +6,7 @@ Release:	0.1
 License:	GPL v2
 Group:		Development/Tools
 Source0:	http://linux.bydg.org/~yogin/qcomicbook/%{name}-%{version}.tar.gz
-# Source0-md5:	84345be534ec9fd438118541e09514a7
+# Source0-md5:	a0ef74e5478d66e3538a362ec691999d
 URL:		http://linux.bydg.org/~yogin/
 BuildRequires:  Qt3Support-devel
 BuildRequires:  QtCore-devel
