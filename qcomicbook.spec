@@ -7,7 +7,7 @@ License:	GPL v2
 Group:		Amusements/Graphics
 Source0:	http://linux.bydg.org/~yogin/qcomicbook/%{name}-%{version}.tar.gz
 # Source0-md5:	a0ef74e5478d66e3538a362ec691999d
-Source0:	%{name}-desktop.patch
+Patch0:		%{name}-desktop.patch
 URL:		http://linux.bydg.org/~yogin/
 BuildRequires:  Qt3Support-devel >= 4.2.0
 BuildRequires:  QtCore-devel >= 4.2.0
