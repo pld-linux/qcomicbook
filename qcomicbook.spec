@@ -1,19 +1,20 @@
-Summary:	comic book viewer
-Summary(pl.UTF-8):	czytnik komiksów
+Summary:	A viewer for comic book archives (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
+Summary(pl.UTF-8):	czytnik komiksów (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
 Name:		qcomicbook
 Version:	0.4.0
 Release:	0.1
 License:	GPL v2
-Group:		Development/Tools
+Group:		Amusements/Graphics
 Source0:	http://linux.bydg.org/~yogin/qcomicbook/%{name}-%{version}.tar.gz
 # Source0-md5:	a0ef74e5478d66e3538a362ec691999d
+Source0:	%{name}-desktop.patch
 URL:		http://linux.bydg.org/~yogin/
-BuildRequires:  Qt3Support-devel
-BuildRequires:  QtCore-devel
-BuildRequires:  QtGui-devel
-BuildRequires:  qt4-build
-BuildRequires:  qt4-linguist
-BuildRequires:  qt4-qmake
+BuildRequires:  Qt3Support-devel >= 4.2.0
+BuildRequires:  QtCore-devel >= 4.2.0
+BuildRequires:  QtGui-devel >= 4.2.0
+BuildRequires:  qt4-build >= 4.2.0
+#BuildRequires:  qt4-linguist >= 4.2.0
+BuildRequires:  qt4-qmake >= 4.2.0
 BuildRequires:  rpmbuild(macros) >= 1.129
 Suggests:	tar
 Suggests:	unace
@@ -28,10 +29,14 @@ Features include: automatic decompression, full-screen mode, two-pages
 viewing, japanese mode, thumbnails view, page scaling, mouse or keyboard
 navigation etc.
 
+QComicBook requires zip/unzip, rar/unrar, tar with gzip+bzip2 support and unace
+to handle archives.
+
 #%description -l pl.UTF-8
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
@@ -39,12 +44,14 @@ navigation etc.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir},%{_bindir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-#	kde_htmldir=%{_kdedocdir} \
-#	kde_libs_htmldir=%{_kdedocdir} \
 	shelldesktopdir=%{_desktopdir}
+
+cp -a fedora/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}
+cp -a fedora/%{name}.png $RPM_BUILD_ROOT%{_pixmapsdir}
 
 #%find_lang %{name} --with-kde
 
@@ -54,10 +61,9 @@ rm -rf $RPM_BUILD_ROOT
 #-f %{name}.lang
 %files 
 %defattr(644,root,root,755)
-%doc AUTHORS Changelog COPYING INSTALL NEWS README THANKS TODO
+%doc AUTHORS ChangeLog COPYING INSTALL NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/qcomicbook
-#%{_datadir}/apps/kontrollerlab
-#%{_datadir}/mimelnk/application/x-kontrollerlab.desktop
-#%{_desktopdir}/kde/kontrollerlab.desktop
-#%{_iconsdir}/*/*/apps/%{name}.png
-#%{_iconsdir}/*/*/actions/dbg*.png
+%{_datadir}/%{name}
+%{_mandir}/man1/%{name}.1.gz
+%{_desktopdir}/%{name}.desktop
+%{_pixmapsdir}/%{name}.png
