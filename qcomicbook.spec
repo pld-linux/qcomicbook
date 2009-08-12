@@ -1,12 +1,12 @@
 Summary:	A viewer for comic book archives (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
 Summary(pl.UTF-8):	czytnik komiksów (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
 Name:		qcomicbook
-Version:	0.4.0
+Version:	0.4.1
 Release:	0.1
-License:	GPL v2
+License:	GPL v2+
 Group:		Amusements/Graphics
 Source0:	http://linux.bydg.org/~yogin/qcomicbook/%{name}-%{version}.tar.gz
-# Source0-md5:	a0ef74e5478d66e3538a362ec691999d
+# Source0-md5:	b9ffbb21198d4c292407184546770242
 Patch0:		%{name}-desktop.patch
 URL:		http://linux.bydg.org/~yogin/
 BuildRequires:  Qt3Support-devel >= 4.2.0
