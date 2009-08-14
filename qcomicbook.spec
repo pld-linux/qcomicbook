@@ -1,6 +1,5 @@
 Summary:	A viewer for comic book archives (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
-Summary(pl.UTF-8):	Czytnik komiksów (rar, cbr, cbz, zip, ace, cba, tar.gz,
-tar.bz2)
+Summary(pl.UTF-8):	Czytnik komiksów (rar, cbr, cbz, zip, ace, cba, tar.gz,tar.bz2)
 Name:		qcomicbook
 Version:	0.4.1
 Release:	0.1
