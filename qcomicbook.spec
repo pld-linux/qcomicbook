@@ -3,12 +3,12 @@
 Summary:	A viewer for comic book archives (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
 Summary(pl.UTF-8):	Czytnik komiksów (rar, cbr, cbz, zip, ace, cba, tar.gz,tar.bz2)
 Name:		qcomicbook
-Version:	0.4.1
+Version:	0.4.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Amusements
 Source0:	http://linux.bydg.org/~yogin/qcomicbook/%{name}-%{version}.tar.gz
-# Source0-md5:	b9ffbb21198d4c292407184546770242
+# Source0-md5:	c59d86eb5d566e85595d72ba096a7c09
 Patch0:		%{name}-desktop.patch
 URL:		http://linux.bydg.org/~yogin/
 BuildRequires:	Qt3Support-devel >= 4.2.0
@@ -60,8 +60,8 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir},%{_bindir}}
 	DESTDIR=$RPM_BUILD_ROOT \
 	shelldesktopdir=%{_desktopdir}
 
-cp -a fedora/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}
-cp -a fedora/%{name}.png $RPM_BUILD_ROOT%{_pixmapsdir}
+cp -a data/%{name}.desktop $RPM_BUILD_ROOT%{_desktopdir}
+cp -a data/%{name}.png $RPM_BUILD_ROOT%{_pixmapsdir}
 
 #%find_lang %{name} --with-kde
 
