@@ -1,19 +1,20 @@
 #
 # Remember : adapter will cut Summary and broke this spec file
 Summary:	A viewer for comic book archives (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
-Summary(pl.UTF-8):	Czytnik komiksów (rar, cbr, cbz, zip, ace, cba, tar.gz,tar.bz2)
+Summary(pl.UTF-8):	Czytnik komiksów (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
 Name:		qcomicbook
-Version:	0.4.4
+Version:	0.5.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Amusements
 Source0:	http://linux.bydg.org/~yogin/qcomicbook/%{name}-%{version}.tar.gz
-# Source0-md5:	461ffcda36df1d4d32abb0ee074510cb
+# Source0-md5:	590f981df476195f1cd71a16c0fff5e6
 Patch0:		%{name}-desktop.patch
 URL:		http://linux.bydg.org/~yogin/
 BuildRequires:	Qt3Support-devel >= 4.3.0
 BuildRequires:	QtCore-devel >= 4.3.0
 BuildRequires:	QtGui-devel >= 4.3.0
+BuildRequires:	cmake
 BuildRequires:	qt4-build >= 4.3.0
 BuildRequires:	qt4-qmake >= 4.3.0
 BuildRequires:	rpmbuild(macros) >= 1.129
@@ -48,7 +49,9 @@ gzip-bzip2 i unace do obsługi archiwów.
 %patch0 -p1
 
 %build
-%configure
+%cmake . \
+	-DCMAKE_INSTALL_PREFIX="%{_prefix}" \
+	-DCMAKE_BUILD_TYPE=Release
 %{__make}
 
 %install
@@ -70,9 +73,8 @@ rm -rf $RPM_BUILD_ROOT
 #-f %{name}.lang
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog COPYING INSTALL NEWS README THANKS TODO
+%doc AUTHORS ChangeLog README THANKS TODO
 %attr(755,root,root) %{_bindir}/qcomicbook
-%{_datadir}/%{name}
 %{_mandir}/man1/%{name}.1*
 %{_desktopdir}/%{name}.desktop
 %{_pixmapsdir}/%{name}.png
