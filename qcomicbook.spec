@@ -7,10 +7,10 @@ Version:	0.5.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Amusements
-Source0:	http://linux.bydg.org/~yogin/qcomicbook/%{name}-%{version}.tar.gz
+Source0:	http://qcomicbook.linux-projects.net/releases/%{name}-%{version}.tar.gz
 # Source0-md5:	590f981df476195f1cd71a16c0fff5e6
 Patch0:		%{name}-desktop.patch
-URL:		http://linux.bydg.org/~yogin/
+URL:		http://qcomicbook.linux-projects.net/
 BuildRequires:	Qt3Support-devel >= 4.3.0
 BuildRequires:	QtCore-devel >= 4.3.0
 BuildRequires:	QtGui-devel >= 4.3.0
@@ -50,9 +50,11 @@ gzip-bzip2 i unace do obsługi archiwów.
 
 %build
 %cmake . \
-	-DCMAKE_INSTALL_PREFIX="%{_prefix}" \
-	-DCMAKE_BUILD_TYPE=Release
-%{__make}
+	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+%if "%{_lib}" == "lib64"
+	-DLIB_SUFFIX=64
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
