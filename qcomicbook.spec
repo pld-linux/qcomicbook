@@ -1,12 +1,15 @@
+#
+# TODO: install *.qm files in /usr/share/locale
+#
 Summary:	A viewer for comic book archives (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
 Summary(pl.UTF-8):	Czytnik komiksów (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
 Name:		qcomicbook
-Version:	0.5.0
+Version:	0.6.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Amusements
 Source0:	http://qcomicbook.linux-projects.net/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	590f981df476195f1cd71a16c0fff5e6
+# Source0-md5:	74dcadab29cfc0e87120fbde47aed116
 Patch0:		%{name}-desktop.patch
 URL:		http://qcomicbook.linux-projects.net/
 BuildRequires:	Qt3Support-devel >= 4.3.0
@@ -14,6 +17,7 @@ BuildRequires:	QtCore-devel >= 4.3.0
 BuildRequires:	QtGui-devel >= 4.3.0
 BuildRequires:	cmake
 BuildRequires:	qt4-build >= 4.3.0
+BuildRequires:	qt4-linguist >= 4.3.0
 BuildRequires:	qt4-qmake >= 4.3.0
 BuildRequires:	rpmbuild(macros) >= 1.129
 Suggests:	tar
