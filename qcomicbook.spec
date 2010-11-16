@@ -4,22 +4,22 @@
 Summary:	A viewer for comic book archives (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
 Summary(pl.UTF-8):	Czytnik komiksów (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
 Name:		qcomicbook
-Version:	0.6.0
+Version:	0.7.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Amusements
 Source0:	http://qcomicbook.linux-projects.net/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	74dcadab29cfc0e87120fbde47aed116
+# Source0-md5:	a736a8354886a30928126bb71f126b83
 Patch0:		%{name}-desktop.patch
 URL:		http://qcomicbook.linux-projects.net/
-BuildRequires:	Qt3Support-devel >= 4.3.0
-BuildRequires:	QtCore-devel >= 4.3.0
-BuildRequires:	QtGui-devel >= 4.3.0
+BuildRequires:	Qt3Support-devel >= 4.5.0
+BuildRequires:	QtCore-devel >= 4.5.0
+BuildRequires:	QtGui-devel >= 4.5.0
 BuildRequires:	cmake
-BuildRequires:	qt4-build >= 4.3.0
-BuildRequires:	qt4-linguist >= 4.3.0
-BuildRequires:	qt4-qmake >= 4.3.0
-BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	qt4-build >= 4.5.0
+BuildRequires:	qt4-linguist >= 4.5.0
+BuildRequires:	qt4-qmake >= 4.5.0
+BuildRequires:	rpmbuild(macros) >= 1.577
 Suggests:	tar
 Suggests:	unace
 Suggests:	unrar
@@ -51,12 +51,7 @@ gzip-bzip2 i unace do obsługi archiwów.
 %patch0 -p1
 
 %build
-%cmake . \
-	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-%if "%{_lib}" == "lib64"
-	-DLIB_SUFFIX=64
-%endif
+%cmake .
 
 %install
 rm -rf $RPM_BUILD_ROOT
