@@ -2,25 +2,34 @@
 # TODO: - install *.qm files in /usr/share/locale
 #	- fix locales install
 #
+%define		qt_ver	5.4.0
 Summary:	A viewer for comic book archives (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
 Summary(pl.UTF-8):	Czytnik komiksów (rar, cbr, cbz, zip, ace, cba, tar.gz, tar.bz2)
 Name:		qcomicbook
-Version:	0.8.2
-Release:	2
+Version:	0.9.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Amusements
-Source0:	http://qcomicbook.linux-projects.net/releases/%{name}-%{version}.tar.gz
-# Source0-md5:	7455a9ad5ed08cc619faaadb5e14bb89
+Source0:	https://github.com/stolowski/QComicBook/archive/%{version}.tar.gz
+# Source0-md5:	d8762ff0698652cd2c383dbaa30cc132
 Patch0:		%{name}-desktop.patch
-URL:		http://qcomicbook.linux-projects.net/
-BuildRequires:	Qt3Support-devel >= 4.5.0
-BuildRequires:	QtCore-devel >= 4.5.0
-BuildRequires:	QtGui-devel >= 4.5.0
-BuildRequires:	cmake
-BuildRequires:	qt4-build >= 4.5.0
-BuildRequires:	qt4-linguist >= 4.5.0
-BuildRequires:	qt4-qmake >= 4.5.0
+URL:		https://github.com/stolowski/QComicBook
+BuildRequires:	Qt5Core-devel >= %{qt_ver}
+BuildRequires:	Qt5PrintSupport-devel >= %{qt_ver}
+BuildRequires:	Qt5Widgets-devel >= %{qt_ver}
+BuildRequires:	Qt5X11Extras-devel >= %{qt_ver}
+BuildRequires:	cmake >= 2.6
+BuildRequires:	pkgconfig
+BuildRequires:	poppler-qt5-devel >= 0.12.4
+BuildRequires:	qt5-build >= %{qt_ver}
+BuildRequires:	qt5-linguist >= %{qt_ver}
+BuildRequires:	qt5-qmake >= %{qt_ver}
 BuildRequires:	rpmbuild(macros) >= 1.600
+Requires:	Qt5Core >= %{qt_ver}
+Requires:	Qt5PrintSupport >= %{qt_ver}
+Requires:	Qt5Widgets >= %{qt_ver}
+Requires:	Qt5X11Extras >= %{qt_ver}
+Requires:	poppler-qt5 >= 0.12.4
 Suggests:	tar
 Suggests:	unace
 Suggests:	unrar
@@ -48,7 +57,7 @@ QCoomiBook wymaga programów zip/unzip, rar/unrar, tar wraz z
 gzip-bzip2 i unace do obsługi archiwów.
 
 %prep
-%setup -q
+%setup -q -n QComicBook-%{version}
 %patch0 -p1
 
 %build
