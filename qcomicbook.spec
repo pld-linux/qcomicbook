@@ -58,7 +58,7 @@ gzip-bzip2 i unace do obsługi archiwów.
 
 %prep
 %setup -q -n QComicBook-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %cmake .
